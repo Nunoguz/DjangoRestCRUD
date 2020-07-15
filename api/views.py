@@ -21,9 +21,7 @@ from django.shortcuts import get_object_or_404
                    instagram -> oguzhan.cakiroglu       
  """
 
-# 74.line, There are the notClassImplementation ( csrf view decorators & JsonParser)
-
-
+# ModelViewSet
 class ArticleViewSet(viewsets.ModelViewSet):
 
     serializer_class = ArticleSerializer
@@ -64,6 +62,7 @@ class ArticleViewSet(viewsets.ViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 """
 
+# GenericAPIView
 class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin,
                      mixins.CreateModelMixin,
                      mixins.UpdateModelMixin,
@@ -96,7 +95,7 @@ class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin,
         return self.destroy(request, id)
 
 
-# Class Based Implementation
+# Class Based Implementation - APIView
 class ArticleAPIView(APIView):
 
     def get(self, request):
